@@ -61,15 +61,3 @@ export default function ActionBTN({
   Book An Appointment
 </ActionBTN>; */
 }
-
-// If you just want to redirect : instead of OnClick, use Link
-
-{
-  // good practice :
-  /* import Link from "next/link";
-    <Link href="/viewalltournament">
-  <ActionBTN size="sm" variant="ghost">
-    VIEW ALL
-  </ActionBTN>
-</Link>; */
-}

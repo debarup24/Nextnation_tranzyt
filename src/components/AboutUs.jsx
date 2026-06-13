@@ -6,7 +6,7 @@ import { Play, PlayCircle } from "lucide-react";
 export default function AboutUs() {
   return (
     <section className="relative overflow-hidden bg-white py-16 lg:py-24">
-      {/* Background Decorative Blob Asset */}
+      {/* BG handle */}
       <img
         src={Ellipse}
         alt=""
@@ -14,14 +14,10 @@ export default function AboutUs() {
       />
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        {/* Responsive Layout Grid Toggle: Stacked on mobile/tablet, 2 columns on desktop */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Block - Typography Elements */}
           <div className="flex flex-col text-left max-w-2xl">
-            {/* Accent Border Line Marker */}
             <div className="w-16 h-[3px] bg-linear-to-r from-pink-500 to-purple-600 mb-6" />
 
-            {/* Section Headings */}
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
               Leading companies trust us
               <span className="block mt-2 text-slate-900">
@@ -29,7 +25,6 @@ export default function AboutUs() {
               </span>
             </h2>
 
-            {/* Description Body Paragraph */}
             <p className="mt-6 text-base text-gray-500 leading-relaxed font-normal">
               We{" "}
               <span className="text-pink-500 font-medium">
@@ -41,7 +36,6 @@ export default function AboutUs() {
               delivery of your project.
             </p>
 
-            {/* Interactive Navigation Link Anchor */}
             <div className="mt-8">
               <a
                 href="#more-info"
@@ -65,20 +59,16 @@ export default function AboutUs() {
             </div>
           </div>
 
-          {/* Right Block - Media Container Asset */}
           <div className="w-full flex justify-center lg:justify-end">
             <div className="relative w-full max-w-xl aspect-4/3 md:aspect-16/10 lg:aspect-4/3 rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-              {/* Main Background Image */}
               <img
                 src={VideoImg}
                 alt="Development team working together"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
-              {/* Overlay Glass Blur Shade Layer */}
               <div className="absolute inset-0 bg-black/10 transition-opacity duration-300 group-hover:bg-black/20" />
 
-              {/* Centered Video Play Button Trigger Wrapper */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <button
                   className="w-16 h-16 flex items-center justify-center rounded-full bg-purple-800 text-white shadow-xl transform transition-transform duration-300 group-hover:scale-110"

@@ -14,9 +14,8 @@ const Home = () => {
       <Navbar />
       <Hero />
 
-      {/* 1. Added relative and overflow-hidden to anchor the background shapes */}
       <section className="relative overflow-hidden py-20">
-        {/* Left Top Blob Asset */}
+        {/* Left Top */}
         <img
           src={Ellipse}
           alt=""
@@ -47,7 +46,6 @@ const Home = () => {
   "
         />
 
-        {/* 2. Wrapped the carousel content in relative z-10 so it layers neatly over the graphics */}
         <div className="relative z-10">
           <ServiceSection />
         </div>

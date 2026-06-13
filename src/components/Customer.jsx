@@ -24,10 +24,9 @@ const Brand_Logos = [
 export default function Customer() {
   const scrollContainerRef = useRef(null);
 
-  // Manual scroll handling logic via the Arrow buttons
   const handleScroll = (direction) => {
     if (scrollContainerRef.current) {
-      const scrollAmount = 300; // Distance to scroll per click
+      const scrollAmount = 300;
       if (direction === "left") {
         scrollContainerRef.current.scrollBy({
           left: -scrollAmount,
@@ -45,11 +44,8 @@ export default function Customer() {
   return (
     <section className="w-full py-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        {/* --- Top Header Section --- */}
-        {/* Flex layout shifts to column and centers text on screens below 1024px */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 text-center lg:text-left items-center lg:items-start">
           <div className="flex flex-col items-center lg:items-start">
-            {/* Top accent line decor */}
             <div className="w-14 h-[3px] bg-gradient-to-r from-pink-500 to-purple-600 mb-4" />
             <span className="text-gray-500 text-lg font-normal">
               Meet the People
@@ -77,8 +73,6 @@ export default function Customer() {
         </div>
       </div>
 
-      {/* --- Logo Scrollable Track --- */}
-      {/* Cleaned the mapping structure down to cleanly mount pure image items */}
       <div
         ref={scrollContainerRef}
         className="flex items-center h-40 bg-[#F7F7FA] gap-16 overflow-x-auto scrollbar-none py-4 px-12 snap-x"
@@ -98,8 +92,6 @@ export default function Customer() {
         ))}
       </div>
 
-      {/* --- Bottom Mobile Controls Section --- */}
-      {/* Visible only below 1024px screen break, placed directly underneath the row list */}
       <div className="flex lg:hidden justify-center items-center gap-4 mt-10">
         <button
           onClick={() => handleScroll("left")}

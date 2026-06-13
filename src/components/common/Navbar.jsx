@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Logo from "../../assets/Logo.png";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -7,6 +7,28 @@ import ActionBTN from "../../ui/buttons/ActionBTN";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        open &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target)
+      ) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Clean up
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
+
   return (
     <nav className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 md:px-12 py-4  shadow-black/10 shadow-md bg-white backdrop-blur-xl">
       {/* Web view */}
@@ -29,6 +51,7 @@ const Navbar = () => {
       </div>
       {/* mobile view */} {/*Cut below 1024 */}
       <button
+        ref={buttonRef}
         className="lg:hidden bg-slate-200 p-1.5 rounded-lg text-black/60 hover:text-white"
         onClick={() => setOpen(!open)}
       >

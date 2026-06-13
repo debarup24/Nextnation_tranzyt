@@ -16,6 +16,7 @@ export default function ServiceCarousels() {
   const [isTransitioning, setIsTransitioning] = useState(true);
   const containerRef = useRef(null);
   const isScrollingRef = useRef(false);
+  const scrollContainerRef = useRef(null);
 
   // Auto-scroll
   useEffect(() => {
@@ -97,6 +98,7 @@ export default function ServiceCarousels() {
             return (
               <div
                 key={`${card.id}-${index}`}
+                ref={scrollContainerRef}
                 className={` shrink-0 bg-white rounded-xl shadow-sm border-2 transition-all duration-500 overflow-hidden flex flex-col p-6 min-h-55 ${
                   isMiddle
                     ? " w-82 md:w-84 border-red-800 scale-105 shadow-md"
@@ -140,14 +142,11 @@ export default function ServiceCarousels() {
         ))}
       </div>
 
-      {/* Absolute Right-Most Corner Progress Track Controls */}
       <div className="absolute right-0 flex items-center gap-2">
-        {/* Fractional Index text */}
         <span className="text-sm font-semibold text-gray-700 min-w-6 text-right">
           {activeHumanIndex}/{originalLength}
         </span>
 
-        {/* Track Progress Line */}
         <div className="w-16 h-1 bg-gray-200 rounded-full overflow-hidden">
           <div
             className="h-full bg-red-800 transition-all duration-300 ease-out"

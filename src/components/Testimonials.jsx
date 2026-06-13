@@ -2,34 +2,29 @@ import React, { useState } from "react";
 import { TESTIMONIAL_DATA } from "../data/MockData";
 
 export default function Testimonials() {
-  // Store the actual array order in state to rotate items fluidly
   const [items, setItems] = useState(TESTIMONIAL_DATA);
 
-  // The center item of a 5-element array is always index 2
   const CENTER_INDEX = 2;
   const activeUser = items[CENTER_INDEX];
 
-  // Rotate array items to the right (move next item to center)
   const handleNext = () => {
     setItems((prevItems) => {
       const updated = [...prevItems];
-      const first = updated.shift(); // Remove the leftmost item
-      updated.push(first); // Append it to the rightmost end
+      const first = updated.shift();
+      updated.push(first);
       return updated;
     });
   };
 
-  // Rotate array items to the left (move previous item to center)
   const handlePrev = () => {
     setItems((prevItems) => {
       const updated = [...prevItems];
-      const last = updated.pop(); // Remove the rightmost item
-      updated.unshift(last); // Insert it at the leftmost end
+      const last = updated.pop();
+      updated.unshift(last);
       return updated;
     });
   };
 
-  // Click on any specific user card directly to shift them to the center spot
   const handleCardClick = (clickedIndex) => {
     const shiftCount = clickedIndex - CENTER_INDEX;
     if (shiftCount === 0) return;
@@ -43,7 +38,6 @@ export default function Testimonials() {
           updated.push(first);
         }
       } else {
-        // Shift right multiple times
         for (let i = 0; i < Math.abs(shiftCount); i++) {
           const last = updated.pop();
           updated.unshift(last);
@@ -56,7 +50,6 @@ export default function Testimonials() {
   return (
     <section className="w-full py-20 bg-white overflow-hidden text-center select-none">
       <div className="max-w-7xl mx-auto px-6 relative">
-        {/* --- Top Accent Bar and Section Headers --- */}
         <div className="flex flex-col items-center mb-16">
           <div className="w-14 h-[3px] bg-gradient-to-r from-pink-500 to-purple-600 mb-4" />
           <span className="text-gray-500 text-lg font-normal">
@@ -67,9 +60,7 @@ export default function Testimonials() {
           </h2>
         </div>
 
-        {/* --- Main Quote Display Block with Navigation Controls --- */}
         <div className="grid grid-cols-12 items-center gap-2 max-w-4xl mx-auto min-h-[160px] relative">
-          {/* Left Arrow Button Controls */}
           <div className="col-span-2 md:col-span-1 flex justify-start z-10">
             <button
               onClick={handlePrev}
@@ -80,10 +71,8 @@ export default function Testimonials() {
             </button>
           </div>
 
-          {/* Connected Testimonial Quote - Shrunk width via max-w-md & centered */}
           <div className="col-span-8 md:col-span-10 flex justify-center px-4 md:px-8">
             <div className="max-w-md w-full relative">
-              {/* Left Decorative Quote Glyph */}
               <span className="absolute -top-6 -left-6 text-pink-500 text-4xl font-serif font-bold opacity-80 select-none">
                 “
               </span>
@@ -91,15 +80,11 @@ export default function Testimonials() {
               <p className="text-gray-500 text-sm md:text-base leading-relaxed transition-all duration-300 ease-in-out">
                 {activeUser?.description}
               </p>
-
-              {/* Right Decorative Quote Glyph */}
               <span className="absolute -bottom-10 -right-6 text-pink-500 text-4xl font-serif font-bold opacity-80 select-none">
                 ”
               </span>
             </div>
           </div>
-
-          {/* Right Arrow Button Controls */}
           <div className="col-span-2 md:col-span-1 flex justify-end z-10">
             <button
               onClick={handleNext}
@@ -111,7 +96,6 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* --- Lower Thumbnails and Profile Metadata Row --- */}
         <div className="flex md:flex-nowrap items-end justify-center gap-6 md:gap-10 mt-20 max-w-5xl mx-auto">
           {items.map((user, index) => {
             const isActive = index === CENTER_INDEX;
@@ -122,7 +106,6 @@ export default function Testimonials() {
                 onClick={() => handleCardClick(index)}
                 className="flex flex-col items-center cursor-pointer transition-all duration-500 w-[140px] shrink-0"
               >
-                {/* User Rounded Avatar Thumbnail */}
                 <div className="relative mb-4 flex justify-center items-center">
                   {isActive && (
                     <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-400 to-purple-500 blur-[2px] p-[3px] -m-[3px] animate-pulse" />
@@ -139,7 +122,6 @@ export default function Testimonials() {
                   />
                 </div>
 
-                {/* Rating Star System Display Block */}
                 <div className="flex items-center justify-center gap-0.5 mb-2 h-4">
                   {[...Array(5)].map((_, starIdx) => (
                     <svg
@@ -152,7 +134,6 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                {/* Profile Identity Metadata Labels */}
                 <h3
                   className={`text-sm font-bold transition-all duration-300 tracking-tight whitespace-nowrap
                   ${isActive ? "text-purple-900 font-extrabold scale-105" : "text-gray-700/80 font-semibold"}`}
